@@ -1,9 +1,20 @@
+import random
+
 class Dzialania:
-    
+
+    poziomy_trudnosci=['banalny', 'latwy', 'sredni', 'trudny']
+    def Add():
+        a
+    def Sub():
+    def Mul():
+    def Div():
+    L=liczba_punktow
+
+
 
 def wybor(a):
     
-     if   a== 1:
+    if   a== 1:
          Add()
     elif a== 2:
          Sub()
@@ -11,9 +22,16 @@ def wybor(a):
          Mul()
     elif a== 4:
          Div()
-    elif a== 5:
-         Ex()
     else :
+        print ":) Zastanow sie jeszcze raz! Przeciez nic nie wybrales!"
+        a=input()
 
+
+        
 
 print "Wybierz co dzisiaj chcesz potrenowac? :)"
+printf()
+
+
+a=input()
+
