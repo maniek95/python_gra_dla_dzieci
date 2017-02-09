@@ -4,9 +4,9 @@ from PIL import ImageTk, Image
 import os
 
 def wyjscie():
-    sys.exit()
-def rozpocznij():
-    exec(zabawa.py)
+    execfile("pa.py")
+def rozpocznij:
+    execfile("poziomy.py") 
 okno=Tkinter.Tk()
 okno.title("Nauka matematyki dla uczniow szkol podstawowych")
 okno.geometry("800x800")
