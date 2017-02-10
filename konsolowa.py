@@ -4,8 +4,17 @@ import random
 import math
 import sys
 
-class Dzialanie:
 
+
+class Dzialanie:
+    
+    operacja = {
+    "dodawanie": lambda x,y: x+y,
+    "odejmowanie": lambda x,y: x-y,
+    "mnozenie": lambda x,y: x*y,
+    "dzielenie": lambda x,y: x/y
+    }
+    
     licznik=0
     def komunikat(self,licznik):
         if dz.licznik==2:
@@ -20,8 +29,8 @@ class Dzialanie:
             print "\n\n\nTo nie mozliwe ale jednak. Nie ma lepszych od Ciebie :)\n\n\n "
 
     def dod(self,x,y):
-        wynik=x+y
-        napis= "ile jest: " + str(x) + " + " + str(y) + "???" 
+        wynik=self.operacja["dodawanie"](x,y)
+        napis= "ile jest: " + str(x) + " + " + str(y) + "???"
         print napis
         odp=input()
         if wynik==odp:
@@ -33,19 +42,19 @@ class Dzialanie:
            self.dod(x,y)
             
     def od(self,x,y):
-        wynik=x-y
+        wynik=self.operacja["odejmowanie"](x,y)
         napis= "ile jest: " + str(x) + " - " + str(y) + "???" 
         print napis
         odp=input()
         if wynik==odp:
            self.licznik +=1
-           print '\nSUPER! POPRAWNA ODPOWIEDZ!\n' 
+           print 
            print "\nStan twoich punktow :)) : " + str(self.licznik)
         else:
            print "\nSPROBUJ JESZCZE RAZ :) NA PEWNO CI SIE UDA!\n stan twoich punktow to: "  + str(self.licznik)
            self.od(x,y)
     def mnoz(self,x,y):
-        wynik=x*y
+        wynik=self.operacja["mnozenie"](x,y)
         napis= "ile jest: " + str(x) + " * " + str(y) + "???" 
         print napis
         odp=input()
@@ -58,10 +67,8 @@ class Dzialanie:
            self.mnoz(x,y)
         
     def dziel(self,x,y):
-        if(x%y!=0):
-            reszta=x%y
-            x+=reszta
-        wynik=x/y
+        
+        wynik=self.operacja["dzielenie"](x,y)
         napis= "ile jest: " + str(x) + " : " + str(y) + "???" 
         print napis
         odp=input()
@@ -93,45 +100,59 @@ class Dzialanie:
              self.mnoz(x,y)
             
         elif b== 4:
+             tmp=0
+             if y>x:
+               x=tmp
+               x=y
+               tmp=y 
+             x=x+x%y
              self.dziel(x,y)
-             #if(x % 
         else:
             print '\n\nwybierz opcje jeszcze raz\n\n'
             self.wybor_operacji(self,x,y)
-    def wybor(self):
+    def wybor(self,us):
+         
          print "\nWybierz poziom trudnosci \n 1.\tbanalny \n 2.\tlatwy \n 3.\tsredni \n 4.\ttrudny \n\n\n5.\tKONIEC ZABAWY :) \n"
-
+        
          a=input()
       
          if a== 1:
             b=random.randint(1,10)
             c=random.randint(1,10)
             self.wybor_operacji(b,c)
-                   
+                  
 
          elif a== 2:
+             
              b=random.randint(1,20)
              c=random.randint(1,20)
              self.wybor_operacji(b,c)
+             
          elif a== 3:
              b=random.randint(1,100)
              c=random.randint(1,100)  
              self.wybor_operacji(b,c)  
          elif a== 4:
-             b=random.randint(1,10000)
-             c=random.randint(1,10000)  
+             b=random.randint(1,1000)
+             c=random.randint(1,1000)  
              self.wybor_operacji(b,c)
          elif a==5:
              execfile("pa.py")
+             file=open("wyniki.txt","ar+")
+             file.write(str(us) + "  uzyskal/a : " + str(self.licznik) + "\n")
+             file.close()
+             
              sys.exit()
          else:
              print '\n\nzla opcja! \n\n'
              self.wybor()
    
 
+
 dz=Dzialanie()
 
+user=raw_input("CZESC! WPISZ SWOJE IMIE: \n ")
 while(1):
-    dz.wybor()
+    dz.wybor(user)
     dz.komunikat(dz.licznik)
 
