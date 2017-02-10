@@ -3,9 +3,9 @@
 import random
 import math
 import sys
+from itertools import count
 
-
-
+  
 class Dzialanie:
     
     operacja = {
@@ -32,7 +32,12 @@ class Dzialanie:
         wynik=self.operacja["dodawanie"](x,y)
         napis= "ile jest: " + str(x) + " + " + str(y) + "???"
         print napis
-        odp=input()
+        for c in count():
+            try:
+                odp=int(input('Wpisz swoja odpowiedz!'))
+                break
+            except ValueError:
+                print ("error", c)
         if wynik==odp:
            self.licznik +=1
            print '\nSUPER! POPRAWNA ODPOWIEDZ!\n' 
@@ -45,7 +50,12 @@ class Dzialanie:
         wynik=self.operacja["odejmowanie"](x,y)
         napis= "ile jest: " + str(x) + " - " + str(y) + "???" 
         print napis
-        odp=input()
+        for c in count():
+            try:
+                odp=int(input('Wpisz swoja odpowiedz!'))
+                break
+            except ValueError:
+                print ("error", c)
         if wynik==odp:
            self.licznik +=1
            print 
@@ -57,7 +67,12 @@ class Dzialanie:
         wynik=self.operacja["mnozenie"](x,y)
         napis= "ile jest: " + str(x) + " * " + str(y) + "???" 
         print napis
-        odp=input()
+        for c in count():
+            try:
+                odp=int(input('Wpisz swoja odpowiedz!'))
+                break
+            except ValueError:
+                print ("error", c)
         if wynik==odp:
            self.licznik +=1
            print '\nSUPER! POPRAWNA ODPOWIEDZ!\n' 
@@ -71,7 +86,12 @@ class Dzialanie:
         wynik=self.operacja["dzielenie"](x,y)
         napis= "ile jest: " + str(x) + " : " + str(y) + "???" 
         print napis
-        odp=input()
+        for c in count():
+            try:
+                odp=int(input('Wpisz swoja odpowiedz!'))
+                break
+            except ValueError:
+                print ("error", c)
         if wynik==odp:
            self.licznik +=1
            print '\n\nSUPER! POPRAWNA ODPOWIEDZ!\n\n' 
@@ -82,7 +102,10 @@ class Dzialanie:
     def wybor_operacji(self,x,y):
 
         print "\nWybierz dzialanie \n 1.\tDodawanie \n 2.\tOdejmowanie \n 3.\tMnozenie \n 4.\tDzielenie \n"
-        b=input()
+        try:
+           b=input()
+        except ValueError:
+            print "Co ty wpisales...Jeszcze raz sprobowac musisz :) "
         if  b== 1:
              self.dod(x,y)
              
@@ -113,8 +136,11 @@ class Dzialanie:
     def wybor(self,us):
          
          print "\nWybierz poziom trudnosci \n 1.\tbanalny \n 2.\tlatwy \n 3.\tsredni \n 4.\ttrudny \n\n\n5.\tKONIEC ZABAWY :) \n"
-        
-         a=input()
+         
+         try:
+            a=input()
+         except ValueError:
+            print "Co ty wpisales...Jeszcze raz sprobowac musisz :) "
       
          if a== 1:
             b=random.randint(1,10)
