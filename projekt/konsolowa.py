@@ -146,7 +146,6 @@ class Dzialanie:
             b=random.randint(1,10)
             c=random.randint(1,10)
             self.wybor_operacji(b,c)
-                  
 
          elif a== 2:
              
@@ -166,6 +165,7 @@ class Dzialanie:
              execfile("pa.py")
              file=open("wyniki.txt","ar+")
              file.write(str(us) + "  uzyskal/a : " + str(self.licznik) + "\n")
+             
              file.close()
              
              sys.exit()

@@ -9,7 +9,7 @@ okno=Tk()
 
 def wyjscie():
     execfile("pa.py")
-    okno.terminate()
+    sys.exit()
 def rozpocznij():
    
     from konsolowa import *
