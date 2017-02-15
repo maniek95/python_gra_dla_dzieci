@@ -4,15 +4,17 @@ import sys
 from PIL import ImageTk, Image
 import os
 
-
 okno=Tk()
 
 def wyjscie():
+    okno.destroy()
     execfile("pa.py")
-    sys.exit()
-def rozpocznij():
    
+def rozpocznij():
+    okno.destroy()
     from konsolowa import *
+
+   # execfile("konsolowa.py")
     okno.close()
 
 okno.title("Nauka matematyki dla uczniow szkol podstawowych")

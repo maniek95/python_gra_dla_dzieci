@@ -1,0 +1,36 @@
+sudo apt-get install python-imaging-tk -> konieczne do odpalenia biblioteki graficznej
+
+
+WYKORZYSTNANE RZECZY:
+
+-składnia ( no to tak w całym projekcie się starałam)
+-typy i funkcje wbudowane. Używałam głownie łańcuchów, jeden słownik ( dla przykłądu) ( na początku)     operacja = {
+    "dodawanie": lambda x,y: x+y,
+    "odejmowanie": lambda x,y: x-y,
+    "mnozenie": lambda x,y: x*y,
+    "dzielenie": lambda x,y: x/y
+    }
+-funkcja lamda:     "dodawanie": lambda x,y: x+y,
+-
+użyłam modułu itertools (aby użyć count() do zliczania,ale tutaj bardziej użyłam jej przykładowo)
+
+for c in count():
+            try:
+                odp=int(input('Wpisz swoja odpowiedz!'))
+                break
+            except ValueError:
+                print ("error", c)
+
+używanie bibliotek zewnętrznych: ImageTk Tkinter 
+mam klasę główną, gdzie zawarłam metody
+
+funkcja w funkcji ( taka glupotka z powitalnym tekstem)
+
+użycie listy, słownika
+użycie wielu funkcji wbudowanych str itd
+
+metody klasy
+
+filter
+
+

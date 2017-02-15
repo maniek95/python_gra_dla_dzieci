@@ -4,7 +4,7 @@ import random
 import math
 import sys
 from itertools import count
-
+import Tkinter 
   
 class Dzialanie:
     
@@ -17,27 +17,32 @@ class Dzialanie:
     
     licznik=0
     def komunikat(self,licznik):
+        lista=["\n\n\nOby tak dalej!\n\n\n","\n\n\nPedzisz jak burza! Wow! Super Ci idzie!\n\n\n","\n\n\nSUPER! Jestes prawdziwym mistrzem!\n\n\n", "\n\n\nNIE WIERZE! JESTEM KROLEM MATEMATYKI!\n\n\n","\n\n\nTo nie mozliwe ale jednak. Nie ma lepszych od Ciebie :)\n\n\n "]
         if dz.licznik==2:
-           print "\n\n\nOby tak dalej!\n\n\n"
+           print lista[0]
         elif dz.licznik==10:
-            print "\n\n\nPedzisz jak burza! Wow! Super Ci idzie!\n\n\n"
+            print lista[1]
         elif dz.licznik==20:
-            print "\n\n\nSUPER! Jestes prawdziwym mistrzem!\n\n\n"
+            print lista[2]
         elif dz.licznik==100:
-            print "\n\n\nNIE WIERZE! JESTEM KROLEM MATEMATYKI!\n\n\n"
+            print lista[3]
         elif dz.licznik==1000:
-            print "\n\n\nTo nie mozliwe ale jednak. Nie ma lepszych od Ciebie :)\n\n\n "
+            print lista[4]
+            
 
+		    
     def dod(self,x,y):
         wynik=self.operacja["dodawanie"](x,y)
         napis= "ile jest: " + str(x) + " + " + str(y) + "???"
         print napis
         for c in count():
+
             try:
                 odp=int(input('Wpisz swoja odpowiedz!'))
                 break
-            except ValueError:
+            except:
                 print ("error", c)
+                pass
         if wynik==odp:
            self.licznik +=1
            print '\nSUPER! POPRAWNA ODPOWIEDZ!\n' 
@@ -56,6 +61,7 @@ class Dzialanie:
                 break
             except ValueError:
                 print ("error", c)
+                pass
         if wynik==odp:
            self.licznik +=1
            print 
@@ -71,8 +77,9 @@ class Dzialanie:
             try:
                 odp=int(input('Wpisz swoja odpowiedz!'))
                 break
-            except ValueError:
+            except:
                 print ("error", c)
+                pass
         if wynik==odp:
            self.licznik +=1
            print '\nSUPER! POPRAWNA ODPOWIEDZ!\n' 
@@ -90,8 +97,9 @@ class Dzialanie:
             try:
                 odp=int(input('Wpisz swoja odpowiedz!'))
                 break
-            except ValueError:
+            except :
                 print ("error", c)
+                pass
         if wynik==odp:
            self.licznik +=1
            print '\n\nSUPER! POPRAWNA ODPOWIEDZ!\n\n' 
@@ -102,10 +110,15 @@ class Dzialanie:
     def wybor_operacji(self,x,y):
 
         print "\nWybierz dzialanie \n 1.\tDodawanie \n 2.\tOdejmowanie \n 3.\tMnozenie \n 4.\tDzielenie \n"
-        try:
-           b=input()
-        except ValueError:
-            print "Co ty wpisales...Jeszcze raz sprobowac musisz :) "
+
+
+        #try:
+        
+        b = input()
+        #except:
+          #   print 'Wpisz jeszcze raz'
+        #pass
+    
         if  b== 1:
              self.dod(x,y)
              
@@ -136,12 +149,13 @@ class Dzialanie:
     def wybor(self,us):
          
          print "\nWybierz poziom trudnosci \n 1.\tbanalny \n 2.\tlatwy \n 3.\tsredni \n 4.\ttrudny \n\n\n5.\tKONIEC ZABAWY :) \n"
+
+       #  try:
+         a = input()
+     #    except:
+        #   print 'Wpisz jeszcze raz'
+       #  pass
          
-         try:
-            a=input()
-         except ValueError:
-            print "Co ty wpisales...Jeszcze raz sprobowac musisz :) "
-      
          if a== 1:
             b=random.randint(1,10)
             c=random.randint(1,10)
@@ -154,30 +168,52 @@ class Dzialanie:
              self.wybor_operacji(b,c)
              
          elif a== 3:
+             
              b=random.randint(1,100)
              c=random.randint(1,100)  
-             self.wybor_operacji(b,c)  
+             self.wybor_operacji(b,c)
+             
          elif a== 4:
+             
              b=random.randint(1,1000)
              c=random.randint(1,1000)  
              self.wybor_operacji(b,c)
+             
          elif a==5:
-             execfile("pa.py")
              file=open("wyniki.txt","ar+")
+
              file.write(str(us) + "  uzyskal/a : " + str(self.licznik) + "\n")
-             
+
              file.close()
-             
+             execfile("pa.py")
              sys.exit()
+             
+            
+       
+             
          else:
              print '\n\nzla opcja! \n\n'
              self.wybor()
    
 
-
+def Napis(a):
+    b="Hej"
+    def zagniezdzona():
+        global c
+        c= "Super swiat matematyki czeka na Ciebie"
+    
+    zagniezdzona()
+    print b
+    print a
+    print globals()["c"]
+   
+    
+    
+    
 dz=Dzialanie()
 
 user=raw_input("CZESC! WPISZ SWOJE IMIE: \n ")
+Napis(user) 
 while(1):
     dz.wybor(user)
     dz.komunikat(dz.licznik)
